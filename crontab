@@ -1,0 +1,6 @@
+#Add these lines to your crontab, edit for you UID
+#getimage gets a new image every minute
+#makevid takes all the days images and... makes a video at 11:59 because dates and times are hard
+#I hate daylight savings, it breaks things
+* *	* * *	[your usernanme]	/home/[your username]/timelapse/scripts/getimage
+59 23	* * *	[your usernane]	/home/[your username]/timelapse/scripts/makevid

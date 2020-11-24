@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DAY=$(/usr/bin/date +%Y_%m_%d)
+DIR=("/home/nick/timelapse/"$DAY"/") #today's image folder
+ARG=("/home/nick/timelapse/"$DAY"/*.jpeg") #all of the images in that folter
+FNAME=("/home/nick/timelapse/"$DAY".mp4") #desired output name for the video in the format YYYY_MM_DD.mp4
+
+if [ ! -d "$DIR" ]; then #did I fuckup somewhere?
+	/usr/bin/echo "Directory "$DIR"  not found" #this ends up in my mailbox to taunt me later
+	exit
+fi
+
+#ffmpeg black magic, take all the images in day's folder and MPEG them
+/usr/bin/ffmpeg -hide_banner -loglevel warning -y -f image2 -pattern_type glob -i "$ARG" $FNAME
+
+#If you are brave you can get rid of the day's images to save HD space. I no longer do this
+#rm -rf $DIR

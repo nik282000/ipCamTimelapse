@@ -1,0 +1,13 @@
+#!/bin/bash
+
+NOW=$(/usr/bin/date +%Y_%m_%d_%H:%M)
+DAY=$(/usr/bin/date +%Y_%m_%d)
+DIR=("/home/[your username]/timelapse/"$DAY"/") #each day's jpegs get saved to a day folder in the format YYYY_MM_DD
+FNAME=("/home/[your username]/timelapse/"$DAY"/"$NOW".jpeg") #each image gets a file name in the format YYYY_MM_DD_HH:MM.jpeg
+
+if [ ! -d "$DIR" ]; then
+	/usr/bin/mkdir $DIR
+fi
+
+#this camera allows individual JPEGs to be downloaded using an ugly URL. Use whatever image aquiring line is required for your camera and use the file name FNAME
+/usr/bin/wget -q -O $FNAME "http://[your camera's IP]/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=derp&user=[camera username]&password=[camera password]"
