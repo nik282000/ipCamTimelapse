@@ -9,5 +9,5 @@ if [ ! -d "$DIR" ]; then
 	/usr/bin/mkdir $DIR
 fi
 
-#this camera allows individual JPEGs to be downloaded using an ugly URL. Use whatever image aquiring line is required for your camera and use the file name FNAME
+#this camera (reolink 410) allows individual JPEGs to be downloaded using an ugly URL. Use whatever image aquiring line is required for your camera and use the file name FNAME
 /usr/bin/wget -q -O $FNAME "http://[your camera's IP]/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=derp&user=[camera username]&password=[camera password]"
